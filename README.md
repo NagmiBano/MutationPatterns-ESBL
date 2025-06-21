@@ -68,10 +68,10 @@ Includes:
   *ORCID:* [0000-0002-7336-8928](https://orcid.org/0000-0002-7336-8928)
   *Institution:* Department of Computer Science, Jamia Millia Islamia, New Delhi-110025, India
 
-
-* 👨‍🏫 **Khalid Raza**<sup>#</sup> 
+* 👨‍🏫 **Khalid Raza**
   *Email:* [kraza@jmi.ac.in](mailto:kraza@jmi.ac.in)
   *ORCID:* [0000-0002-3646-6828](https://orcid.org/0000-0002-3646-6828)
   *Institution:* Department of Computer Science, Jamia Millia Islamia, New Delhi-110025, India
 
 ---
+
