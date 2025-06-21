@@ -1,153 +1,81 @@
-# MutationPatterns-ESBL-
-This study facilitates various mutational studies in ESBL (CTX-M, SHV and TEM) genes for efficient and resistance free drug design against Escherichia coli and Klebsiella pneumoniae.
-
-Also, the data in Excel format is provided for any future studies. 
-
-# DeepEntXAI
-
-**DeepEntXAI: A CNN-LSTM + Explainable AI Framework for Predicting Drug Activity Against Enterobacteriaceae**
-
-DeepEntXAI is a hybrid deep learning framework developed to predict the biological activity of chemical compounds against **Enterobacteriaceae** pathogens (e.g., *E. coli*, *K. pneumoniae*, *S. enterica*) using molecular descriptors. The framework combines a **CNN-LSTM** architecture with **explainable AI (XAI)** techniques to achieve state-of-the-art prediction accuracy while ensuring model interpretability. It supports both labelled and unlabelled compound predictions and includes tools for compound prioritisation and descriptor relevance evaluation.
+# 🔬 Mutation Patterns in ESBL-Producing Genes
+## Article Title: Unravelling Mutation Patterns in Extended-Spectrum β-Lactamases for Precision Drug Design Against AMR in Enterobacteriaceae
+Antimicrobial resistance (AMR) is one of the most pressing global health threats, causing over **1.27 million deaths annually**, with projections reaching **10 million by 2050**. A significant contributor to this crisis is the **Enterobacteriaceae** family—particularly *Escherichia coli* and *Klebsiella pneumoniae*—which produce **Extended-Spectrum β-Lactamases (ESBLs)**. These include **bla-CTX-M, bla-SHV, and bla-TEM** genes, which confer resistance to β-lactam antibiotics, complicating the treatment of infections like UTIs and pneumonia.
 
 ---
 
-## 📌 Key Features
+## 🧬 Project Overview
 
-* **Hybrid Deep Learning Model**: Combines CNN and LSTM to capture both local and long-range dependencies in molecular descriptor sequences.
-* **High Accuracy**: Achieved 99.80% accuracy, 99.63% precision, and 99.94% recall on test data.
-* **Generalisation**: Demonstrated strong generalisation through 5-fold and 10-fold cross-validation with average accuracies of 99.09% ± 0.36% and 99.13% ± 0.27%, respectively.
-* **Explainability**: Integrates both:
-
-  * A **hybrid perturbation-based XAI** method (accuracy drop, flip ratio, log-loss increase)
-  * **LIME** for local interpretability and compound-specific insights.
-* **Prediction on Unlabelled Data**: Scores new compounds (0–10 scale) to identify high-potential drug candidates.
-* **Output-Ready Results**: Generates CSV files with prediction probabilities, scaled activity scores, and interpretability rankings.
+This study compiles all available variants (including wild types) of **bla-CTX-M, bla-SHV, and bla-TEM** genes and performs a comprehensive suite of computational analyses to investigate patterns of mutation and resistance.
 
 ---
 
-## 📂 Repository Structure
+## 🔍 Analyses Performed
 
-```
-DeepEntXAI/
-├── data/                        # Sample_Dataset.csv, SampleInput molecular descriptors (CSV format)
-├── models/                      # 1_CNN_LSTM_XAI.pth, Trained models and saved weights
-├── notebooks/                   # Enterobacteriaceae_Code.ipynb, Code with outputs (CNN-LSTM-XAI)
-├── README.md                    # README.md, Project documentation
-└── LICENSE                      # LICENSE.md, License file
-```
+* **Genomic Features**
 
----
+  * GC Content
+  * SNPs and InDels
+  * Codon Usage
+  * Transcription Factor Binding Sites (TFBS)
 
-## 📊 Dataset
+* **Protein-Level Features**
 
-* **Source**: PubChem and ChEMBL BioAssays relevant to Enterobacteriaceae.
-* **Size**: 17,097 compounds with 2,997 descriptors each (selected 2000 with PCA).
-* **Descriptors**: Computed using **RDKit**, **Mordred**, and **PaDEL**.
-* **Preprocessing**:
+  * Amino Acid Composition
+  * Mutation Mapping (Nucleotide & Amino Acid Level)
+  * Stability, Hydrophobicity, Flexibility
+  * Isoelectric Point (pI), Aromaticity, Aliphatic Index
 
-  * Structure standardisation
-  * Duplicate removal
-  * Descriptor curation
-  * and many more, read the full paper. 
-  * Final active set: 8,097 ligands, 9000 Inactive compounds. 
+* **Mutation Hotspot Identification**
+
+* **Probability Mapping of Mutations**
+
+* **Conservation Analysis**
 
 ---
 
-## 🚀 Getting Started
+## 📊 Dataset and Applications
 
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/ShabanAhmad/DeepEntXAI.git 
-cd DeepEntXAI
-```
-
-### 2. Set Up the Environment
-
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows use: venv\Scripts\activate
-pip install -r requirements.txt
-```
-
-### 3. Run Training
-
-```python
-Directly use the saved weight file.
-```
-
-### 4. Predict on Unlabelled Data
-
-```python
-Pass any unlabelled data in CSV format. 
-```
-
-### 5. Run Explainability Analysis
-
-```python
-python src/explain_hybrid.py --input data/test.csv --model models/ _weights.h5
-python src/explain_lime.py --input data/test.csv --model models/ _weights.h5
-```
+* All processed data is provided in **Excel format with multiple sheets**, making it easily accessible for **further computational studies, visualisation, and machine learning applications**.
+* The final merged dataset helps in identifying **regions to target or avoid in resistance-free drug design** and serves as a **feature-rich input for training predictive models**.
 
 ---
 
-## 📈 Results Summary
+## 📁 Repository
 
-| Metric                     | Score          |
-| -------------------------- | -------------- |
-| Accuracy                   | 99.80%         |
-| Precision                  | 99.63%         |
-| Recall (Sensitivity)       | 99.94%         |
-| F1-Score                   | 99.78%         |
-| Specificity                | 99.67%         |
-| AUC-ROC                    | 0.998          |
-| Cross-Validation (5-fold)  | 99.09% ± 0.36% |
-| Cross-Validation (10-fold) | 99.13% ± 0.27% |
+🔗 [MutationPatterns-ESBL GitHub Repository](https://github.com/NagmiBano/MutationPatterns-ESBL)
+
+Includes:
+
+* Raw and processed data
+* Excel file with multiple annotated sheets
+* Scripts and documentation
 
 ---
 
-## 🧠 XAI Insights
+## 🎯 Use Cases
 
-* **Top Feature**: `minHsNH3p` – High perturbation sensitivity across accuracy, flip ratio, and log-loss.
-* **Low-Importance Features**: `geomDiameter`, `nG12FRing`, `BCUTZ-1l`
-* **Top Compounds (by confidence)**: `4615770`, `5309708`, `70556`, with scaled scores \~9.9999
-* **Least Certain Compounds**: Predictions near 0.5 threshold, structurally ambiguous
-
----
-
-## 🧪 Applications
-
-* Active compound screening
-* Compound efficacy assessment
-* Drug repurposing
-* Prioritisation for **Enterobacteriaceae** infections (e.g., UTIs, BSIs, sepsis)
-* Feature-driven compound design
+* **Drug Design**: Identify and avoid resistant-prone regions
+* **ML Model Training**: Use curated features for predictive modeling
+* **Bioinformatics Research**: Extend or validate findings using open data
 
 ---
 
-## 📜 License
-
-This project is licensed under the MIT License (read full license file).
+Great! Here's the updated `README.md` section with the full author information formatted professionally and clearly:
 
 ---
 
-## 🤝 Contributions
+## 👩‍💻 Authors
 
-We welcome contributions from the community. Please open issues or submit pull requests for improvements, bug fixes, or new features.
+* 🧑‍🎓 **Nagmi Bano**
+  *Email:* [nagmi2300973@st.jmi.ac.in](mailto:nagmi2300973@st.jmi.ac.in)
+  *ORCID:* [0000-0002-7336-8928](https://orcid.org/0000-0002-7336-8928)
+  *Institution:* Department of Computer Science, Jamia Millia Islamia, New Delhi-110025, India
 
----
 
-## 📧 Contact
-
-For questions or collaboration inquiries, please contact:
-
-**Author**: *\Nagmi Bano1, Dr Shaban Ahmad1,2, Prof Khalid Raza1*
-
-**Email**: *\nagmi2300973@st.jmi.ac.in, Shaban@sund.ku.dk, kraza@jmi.ac.in*
-
-**Institutions**: *\
-1 Department of Computer Science, Jamia Millia Islamia, New Delhi-110025, India.
-
-2 Biomedicine Section, Department of Veterinary and Animal Sciences, Faculty of Health and Medical Sciences, University of Copenhagen, Frederiksberg, Denmark.*
+* 👨‍🏫 **Khalid Raza**<sup>#</sup> *(Corresponding Author)*
+  *Email:* [kraza@jmi.ac.in](mailto:kraza@jmi.ac.in)
+  *ORCID:* [0000-0002-3646-6828](https://orcid.org/0000-0002-3646-6828)
+  *Institution:* Department of Computer Science, Jamia Millia Islamia, New Delhi-110025, India
 
 ---
