@@ -61,10 +61,6 @@ Includes:
 
 ---
 
-Great! Here's the updated `README.md` section with the full author information formatted professionally and clearly:
-
----
-
 ## 👩‍💻 Authors
 
 * 🧑‍🎓 **Nagmi Bano**
